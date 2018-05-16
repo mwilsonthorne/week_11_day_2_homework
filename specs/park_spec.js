@@ -22,7 +22,11 @@ describe('Park', function() {
 
   it('should have a name', function () {
     const actual = park.name;
-    assert.strictEqual(actual, 'Jurassic Park');
+    assert.strictEqual(actual, 'Jurassic Park'); //strictEqual(), which uses
+    //JavaScripts strict equality operator (===). As a general rule of thumb
+    //we should use that instead of equal() so that we can be certain that
+    //our tests are passing or failing for the right reasons. If we were comparing
+    //1 and '1' the test would pass using assertEqual
   });
 
   it('should have a ticket price', function () {
@@ -38,33 +42,33 @@ describe('Park', function() {
   });
 
   it('should be able to add a dinosaur to its collection', function () {
-    park.addDinosaur(dinosaur4);
-    const actual = park.collectionDinosaurs.length;
+    park.addDinosaur(dinosaur4); //add another dinosaur into the array
+    const actual = park.collectionDinosaurs.length; //get the length of the array
     assert.strictEqual(actual, 4);
 
   });
 
   it('should be able to remove a dinosaur from its collection', function () {
-    park.removeDinosaur();
-    const actual = park.collectionDinosaurs.length;
+    park.removeDinosaur(); //remove dinosaur from the array. No need to put in a variable, we are not intrested in a particular dinosaur.
+    const actual = park.collectionDinosaurs.length; //get the length of the array
     assert.strictEqual(actual, 2);
 
   });
 
   it('should be able to find all dinosaurs of a particular species', function () {
-    const actual = park.findBySpecies('t-rex').length;
-    assert.strictEqual(actual, 1);
+    const actual = park.findBySpecies('t-rex').length; //get the length of the array to show the number of t-rex
+    assert.strictEqual(actual, 1); //confirms only 1 t-rex in the array
   });
 
   it('should be able to remove all dinosaurs of a particular species', function () {
-    park.removeBySpecies('t-rex');
-    const actual = park.collectionDinosaurs.length;
-    assert.strictEqual(actual, 2);
+    park.removeBySpecies('t-rex'); //remove all the t-rex dinosaurs
+    const actual = park.collectionDinosaurs.length; //get the length of the array after removal
+    assert.strictEqual(actual, 2); //confirms 2 objects left in the array after and all t-rexs removed
   });
 
   it('should be able to find the dinosaur that attracts the most visitors', function () {
-    const actual = park.findDinosaurAttractsMostVisitors();
-    assert.deepStrictEqual(actual, dinosaur1);
+    const actual = park.findDinosaurAttractsMostVisitors(); //using the array sort function which sorts the array first and then returns the max.
+    assert.deepStrictEqual(actual, dinosaur1); //dinosaur1 has the most visitors. deepStrictEqual looks at the values contained within the object and use those to determine if the objects are equal
 
 
   });
